@@ -4,15 +4,14 @@ import { createClient, Entry, Space, ContentfulClientApi } from 'contentful';
 // change these to include your own settings
 const DEFAULT_CONFIG = {
   credentials: {
-    space: 'wl1z0pal05vy',
-    accessToken: '0e3ec801b5af550c8a1257e8623b1c77ac9b3d8fcfc1b2b7494e3cb77878f92a',
+    space: 'jvijs8gputds',
+    accessToken: '0cbeef691191860f77f0f682fa50ef9a9aa76f008a7349b6fb7a59a4914ae653',
   },
-
   contentTypeIds: {
-    product: '2PqfXUJwE8qSYKuM0U6w8M',
-    category: '6XwpTaSiiI2Ak2Ww0oi6qa'
+    article: 'article',
+    category: 'category'
   }
-}
+};
 
 @Injectable()
 export class ContentfulService {
@@ -21,7 +20,7 @@ export class ContentfulService {
     space: string,
     accessToken: string
   };
-  titleHandlers: Function[]
+  titleHandlers: Function[];
 
   constructor() {
     try {
@@ -36,40 +35,44 @@ export class ContentfulService {
   }
 
   onTitleChange(fn): void {
-    this.titleHandlers.push(fn)
+    this.titleHandlers.push(fn);
   }
 
   // get the current space
   getSpace(): Promise<Space> {
     return this.cdaClient.getSpace()
       .then(space => {
-        this.titleHandlers.forEach(handler => handler(space.name))
+        this.titleHandlers.forEach(handler => handler(space.name));
 
         return space;
-      })
+      });
   }
 
   // fetch products
   getProducts(query?: object): Promise<Entry<any>[]> {
     return this.cdaClient.getEntries(Object.assign({
-      content_type: DEFAULT_CONFIG.contentTypeIds.product
+      content_type: DEFAULT_CONFIG.contentTypeIds.article
     }, query))
-    .then(res => res.items);
+    .then(res => {
+      return res.items;
+    });
   }
 
   // fetch products with a given slug
   // and return one of them
   getProduct(slug: string): Promise<Entry<any>> {
     return this.getProducts({ 'fields.slug': slug })
-    .then(items => items[0])
+    .then(items => items[0]);
   }
 
   // fetch categories
   getCategories(): Promise<Entry<any>[]> {
     return this.cdaClient.getEntries({
-      content_type: '6XwpTaSiiI2Ak2Ww0oi6qa'
+      content_type: 'category'
     })
-    .then(res => res.items);
+    .then(res => {
+      return res.items;
+    });
   }
 
   // return a custom config if available

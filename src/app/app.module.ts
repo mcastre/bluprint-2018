@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
-import { RouterModule, Routes }   from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule, MatInputModule, MatToolbarModule, MatButtonModule, MatCardModule, MatTabsModule } from '@angular/material';
 
@@ -12,10 +12,12 @@ import { CategoryListComponent } from './category-list/category-list.component';
 
 import { ContentfulService } from './contentful.service';
 import { SettingsComponent } from './settings/settings.component';
+import { HomeComponent } from './home/home.component';
 
 // check this and make a module out of it
 const routes: Routes = [
-  { path: '', redirectTo: '/products', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home',  component: HomeComponent },
   { path: 'products',  component: ProductListComponent },
   { path: 'products/:slug', component: ProductDetailComponent },
   { path: 'categories',  component: CategoryListComponent },
@@ -28,7 +30,8 @@ const routes: Routes = [
     ProductListComponent,
     ProductDetailComponent,
     CategoryListComponent,
-    SettingsComponent
+    SettingsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

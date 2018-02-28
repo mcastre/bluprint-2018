@@ -1,7 +1,11 @@
-.logo {
-  width: 1em;
-  height: 1em;
+@import '~sass/settings/variables';
+
+.bp-logo-nav {
+  width: 121px;
+  height: 31px;
   margin-right: .5em;
+  background-image: url('../assets/images/bluprint-logo-white.svg');
+  background-repeat: no-repeat;
   display: inline-block;
   vertical-align: middle;
 }

@@ -7,7 +7,7 @@ import { Entry } from 'contentful';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.css']
+  styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
   product: Entry<any>;

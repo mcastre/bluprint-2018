@@ -1,3 +1,16 @@
+// Bootstrap sass files
+@import
+  'functions',
+  'variables',
+  'mixins',
+  'print',
+  'reboot',
+  'type';
+
+// App sass files
+@import
+  './variables';
+
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 * {

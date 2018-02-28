@@ -5,7 +5,7 @@ import { Entry } from 'contentful';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
   products: Entry<any>[];
@@ -14,6 +14,6 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
     this.contentfulService.getProducts()
-    .then(products => this.products = products)
+    .then(products => this.products = products);
   }
 }

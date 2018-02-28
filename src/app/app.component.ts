@@ -4,7 +4,7 @@ import { ContentfulService } from './contentful.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   title: string;
@@ -14,6 +14,6 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.ContentfulService.onTitleChange(title => this.title = title)
+    this.ContentfulService.onTitleChange(title => this.title = title);
   }
 }

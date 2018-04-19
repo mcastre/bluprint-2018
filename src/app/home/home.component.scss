@@ -1,6 +1,34 @@
+@import '~sass/settings/variables';
+
 .bp-hero {
-  width: 100%;
+  position: relative;
   height: 80vh;
-  background-repeat: no-repeat;
-  background-size: cover;
+  overflow-y: hidden;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+  }
+}
+
+.bp-hero-article-title-wrapper {
+  position: absolute;
+  top: 2rem;
+  width: 100%;
+  z-index: 2;
+  padding: 1rem;
+  @media #{$bp-media-query-medium-screen} {
+    top: 25%;
+    padding: 2rem;
+  }
+}
+
+.bp-hero-article-title {
+  width: 40%;
 }

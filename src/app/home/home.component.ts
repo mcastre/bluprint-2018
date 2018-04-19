@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     .then(articles => {
       console.log('HomeComponent get articles', articles);
       this.articles = articles;
-      this.getFeaturedArticle();
+      this.getFeaturedArticle(articles);
     });
 
     this.contentfulService.getCategories()
@@ -31,8 +31,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getFeaturedArticle() {
-    const filteredArticles = this.articles.filter(article => {
+  getFeaturedArticle(articles) {
+    const filteredArticles = articles.filter(article => {
+      console.log('featured article', article);
       return article.fields.articleCategory[0].fields.categoryTitle === 'Featured Article';
     });
     this.featuredArticle = filteredArticles[0];

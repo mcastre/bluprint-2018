@@ -1,0 +1,47 @@
+@import '~sass/settings/variables';
+
+.bp-button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: $bp-font-size-normal;
+  display: inline-block;
+  line-height: $bp-button-line-height;
+  padding: $bp-button-padding-y $bp-button-padding-x;
+  margin: 0;
+  height: auto;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none;
+  border: 0;
+  box-shadow: none;
+  &:focus,
+  &:hover {
+    text-decoration: none;
+  }
+  &:disabled,
+  &.disabled {
+    cursor: not-allowed;
+  }
+}
+
+.bp-link {
+  font-weight: $bp-font-weight-normal;
+  line-height: 1.5;
+  background: transparent;
+  padding: 0;
+  font-size: $bp-font-size-normal;
+  color: $bp-blue;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none;
+  border: 0;
+  box-shadow: none;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+  &:disabled,
+  &.disabled {
+    cursor: not-allowed;
+  }
+}

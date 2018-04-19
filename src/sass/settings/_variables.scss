@@ -1,0 +1,97 @@
+$bp-rem-base: 16px !default;
+
+// It strips the unit of measure and returns it
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function convert-to-rem($value, $base-value: $bp-rem-base)  {
+  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+  @if ($value == 0rem) { $value: 0; } // Turn 0em into 0
+  @return $value;
+}
+
+@function rem-calc($values, $base-value: $bp-rem-base) {
+  $max: length($values);
+
+  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+
+  $remValues: ();
+  @for $i from 1 through $max {
+    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+  }
+  @return $remValues;
+}
+
+// Color Variables -----------------------------------
+
+$bp-blue: #3498DB !default;
+$bp-dark-blue: #212D43 !default;
+$bp-blue-grey: #84929C !default;
+$bp-dark-grey: #3E3934 !default;
+
+$bp-color-values: (
+  '-blue': $bp-blue,
+  '-dark-blue': $bp-dark-blue,
+  '-blue-grey': $bp-blue-grey,
+  '-dark-grey': $bp-dark-grey
+) !default;
+
+// Font Variables -----------------------------------
+
+$bp-font-family-mono: 'Inconsolata', monospace;
+$bp-font-family-heading: 'Hind', sans-serif;
+
+$bp-font-size-normal: rem-calc(14px) !default;
+$bp-font-size-large: rem-calc(34px) !default;
+$bp-font-size-xlarge: rem-calc(65px) !default;
+
+$bp-font-weight-normal: 400 !default;
+$bp-font-weight-bold: 700 !default;
+
+// Button Variables -----------------------------------
+
+$bp-button-line-height: 1.125rem !default;
+$bp-button-padding-x: 1rem !default;
+$bp-button-padding-y: 0.5rem !default;
+
+// Breakpoints -----------------------------------
+
+$bp-breakpoint-small:  576px  !default;
+$bp-breakpoint-medium: 768px  !default;
+$bp-breakpoint-large:  992px  !default;
+$bp-breakpoint-xl:     1200px !default;
+
+
+// Media Queries -----------------------------------
+
+$bp-media-query-xs-screen: "screen" !default;
+$bp-media-query-small-screen: "screen and (min-width: #{$bp-breakpoint-small})" !default;
+$bp-media-query-medium-screen: "screen and (min-width: #{$bp-breakpoint-medium})" !default;
+$bp-media-query-large-screen: "screen and (min-width: #{$bp-breakpoint-large})" !default;
+$bp-media-query-xl-screen: "screen and (min-width: #{$bp-breakpoint-xl})" !default;
+
+$bp-media-query-xs-screen-only: "screen and (max-width: #{$bp-breakpoint-small - 1px})" !default;
+$bp-media-query-small-screen-only: "screen and (min-width: #{$bp-breakpoint-small}) and (max-width: #{$bp-breakpoint-medium - 1px})" !default;
+$bp-media-query-medium-screen-only: "screen and (min-width: #{$bp-breakpoint-medium}) and (max-width: #{$bp-breakpoint-large - 1px})" !default;
+$bp-media-query-large-screen-only: "screen and (min-width: #{$bp-breakpoint-large}) and (max-width: #{$bp-breakpoint-xl - 1px})" !default;
+$bp-media-query-xl-screen-only: $bp-media-query-xl-screen !default;
+
+// Used in Spacing Classes -----------------------------------
+
+$bp-media-queries: (
+//prefix: media query
+  '':     $bp-media-query-xs-screen,
+  'sm-':  $bp-media-query-small-screen,
+  'md-':  $bp-media-query-medium-screen,
+  'lg-':  $bp-media-query-large-screen,
+  'xl-':  $bp-media-query-xl-screen
+) !default;
+
+$bp-media-queries-for-hide: (
+  'xs-': $bp-media-query-xs-screen-only,
+  'sm-': $bp-media-query-small-screen-only,
+  'md-': $bp-media-query-medium-screen-only,
+  'lg-': $bp-media-query-large-screen-only,
+  'xl-': $bp-media-query-xl-screen-only
+) !default;

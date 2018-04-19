@@ -1,4 +1,6 @@
 <section class="bp-hero">
-  <img [src]="!!featuredArticleImage ? featuredArticleImage.fields.file.url : ''" alt="{{featuredArticleImage.fields.title}}" class="bp-featured-article-hero-image">
-  <h1>{{featuredArticleTitle}}</h1>
+  <div class="bp-hero-article-title-wrapper">
+    <h1 class="bp-hero-article-title bp-float-right bp-heading-family bp-font-size-xlarge bp-weight-bold bp-text-white bp-align-right">{{featuredArticleTitle}}</h1>
+  </div>
+  <img [src]="!!featuredArticleImage ? featuredArticleImage.fields.file.url : ''" alt="{{featuredArticleImage?.fields.title}}" class="bp-featured-article-hero-image">
 </section>

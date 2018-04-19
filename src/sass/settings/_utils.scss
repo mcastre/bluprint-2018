@@ -1,0 +1,217 @@
+@import './variables';
+
+// 1:
+// FLEXBOX UTILS -----------------------------------
+
+.bp-display-flex {
+  display: flex !important;
+}
+
+.bp-flex-justify-content-space-between {
+  justify-content: space-between !important;
+}
+
+
+// 2:
+// MARGINS -----------------------------------
+
+.bp-margin-right-auto {
+  margin-right: auto !important;
+}
+
+
+// 3:
+// RESPONSIVE -----------------------------------
+
+@mixin bp-generate-breakpoint-prefixes() {
+  // generate prefixed classes
+  @each $breakpoint-prefix, $media-query in $bp-media-queries {
+    //$breakpoint-prefix: ".bp-#{$breakpoint-prefix}";
+    @media #{$media-query} {
+      .bp-#{$breakpoint-prefix} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin bp-generate-breakpoint-prefixes-for-hide() {
+  // generate prefixed classes
+  @each $breakpoint-prefix, $media-query in $bp-media-queries-for-hide {
+    //$breakpoint-prefix: ".bp-#{$breakpoint-prefix}";
+    @media #{$media-query} {
+      .bp-#{$breakpoint-prefix} {
+        @content;
+      }
+    }
+  }
+}
+
+$bp-display-values: (
+  inline,
+  block,
+  inline-block,
+  none,
+  flex
+) !default;
+
+
+@include bp-generate-breakpoint-prefixes() {
+  @each $display-value in $bp-display-values {
+    &display-#{$display-value} { display: $display-value !important }
+  }
+}
+
+@include bp-generate-breakpoint-prefixes-for-hide() {
+  @each $display-value in $bp-display-values {
+    &display-#{$display-value}-hide { display: $display-value !important }
+  }
+}
+
+// 3:
+// TYPE -----------------------------------
+
+.bp-mono-family {
+  font-family: $bp-font-family-mono !important;
+}
+
+.bp-heading-family {
+  font-family: $bp-font-family-heading !important;
+}
+
+.bp-weight-normal {
+  font-weight: $bp-font-weight-normal !important;
+}
+
+.bp-weight-bold {
+  font-weight: $bp-font-weight-bold !important;
+}
+
+.bp-font-size-normal {
+  font-size: $bp-font-size-normal !important;
+}
+
+.bp-font-size-large {
+  font-size: $bp-font-size-large !important;
+}
+
+.bp-font-size-xlarge {
+  font-size: $bp-font-size-xlarge !important;
+}
+
+// 3:
+// COLOR FILL -----------------------------------
+
+$bp-color-map: (
+  'white': white,
+  'blue': $bp-blue,
+  'dark-blue': $bp-dark-blue,
+  'blue-grey': $bp-blue-grey,
+  'dark-grey': $bp-dark-grey
+) !default;
+
+@mixin color-map-for-text() {
+  @each $color-prefix, $color-value in $bp-color-map {
+    .bp-text-#{$color-prefix} { color: $color-value !important }
+  }
+}
+
+@mixin color-map-for-fill() {
+  @each $color-prefix, $color-value in $bp-color-map {
+    .bp-fill-#{$color-prefix} { background-color: $color-value !important }
+  }
+}
+
+@include color-map-for-text();
+@include color-map-for-fill();
+
+
+// 4:
+// ALIGNMENT -----------------------------------
+
+.bp-align-left {
+  text-align: left !important;
+}
+
+.bp-align-right {
+  text-align: right !important;
+}
+
+.bp-align-center {
+  text-align: center !important;
+}
+
+// 4:
+// FLOATS -----------------------------------
+
+.bp-float-left {
+  float: left !important;
+}
+
+.bp-float-right {
+  float: right !important;
+}
+
+
+// menu icon hover idea
+
+// HTML - <a href="#" class="menu example5"><span></span></a>
+
+.menu {
+	position: relative;
+	display:  inline-block;
+	width: 30px;
+	height: 30px;
+	margin: 25px;
+}
+.menu span {
+	margin: 0 auto;
+	position: relative;
+	top: 12px;
+}
+.menu span:before, .menu span:after {
+	position: absolute;
+	content: '';
+}
+.menu span, .menu span:before, .menu span:after {
+	width: 30px;
+	height: 6px;
+	background-color: #000;
+	display: block;
+}
+.menu span:before {
+	margin-top: -12px;
+}
+.menu span:after {
+	margin-top: 12px;
+}
+
+
+.example5 span {
+	-webkit-transition-duration: 0s; transition-duration: 0s;
+	-webkit-transition-delay: 0.2s; transition-delay: 0.2s;
+}
+.example5:hover span {
+	background-color: rgba(0,0,0,0.0);
+	-webkit-transition-delay: 0.2s; transition-delay: 0.2s;
+}
+.example5 span:before {
+	-webkit-transition-property: margin, -webkit-transform; transition-property: margin, transform;
+	-webkit-transition-duration: 0.2s; transition-duration: 0.2s;
+	-webkit-transition-delay: 0.2s, 0s; transition-delay: 0.2s, 0s;
+}
+.example5:hover span:before {
+	margin-top: 0;
+	-webkit-transform: rotate(45deg); transform: rotate(45deg);
+	-webkit-transition-delay: 0s, 0.2s; transition-delay: 0s, 0.2s;
+}
+.example5 span:after {
+	-webkit-transition-property: margin, -webkit-transform; transition-property: margin, transform;
+	-webkit-transition-duration: 0.2s; transition-duration: 0.2s;
+	-webkit-transition-delay: 0.2s, 0s; transition-delay: 0.2s, 0s;
+}
+.example5:hover span:after {
+	margin-top: 0;
+	-webkit-transform: rotate(-45deg); transform: rotate(-45deg);
+	-webkit-transition-delay: 0s, 0.2s; transition-delay: 0s, 0.2s;
+}

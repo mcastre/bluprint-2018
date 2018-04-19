@@ -13,6 +13,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { ContentfulService } from './contentful.service';
 import { SettingsComponent } from './settings/settings.component';
 import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
 
 // check this and make a module out of it
 const routes: Routes = [
@@ -31,7 +32,8 @@ const routes: Routes = [
     ProductDetailComponent,
     CategoryListComponent,
     SettingsComponent,
-    HomeComponent
+    HomeComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

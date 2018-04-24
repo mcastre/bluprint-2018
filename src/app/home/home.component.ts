@@ -31,6 +31,16 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  getNonFeaturedArticles() {
+    if (this.articles) {
+      return this.articles.filter(article => article.fields.articleCategory[0].fields.categoryTitle !== 'Featured Article');
+    }
+  }
+
+  getSingleArticleCategory(article) {
+    return article.fields.articleCategory[0].fields.categoryTitle;
+  }
+
   getFeaturedArticle(articles) {
     const filteredArticles = articles.filter(article => {
       console.log('featured article', article);

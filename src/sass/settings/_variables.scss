@@ -42,6 +42,7 @@ $bp-color-values: (
 $bp-font-family-mono: 'Inconsolata', monospace;
 $bp-font-family-heading: 'Hind', sans-serif;
 
+$bp-font-size-small: rem-calc(10px) !default;
 $bp-font-size-normal: rem-calc(14px) !default;
 $bp-font-size-large: rem-calc(34px) !default;
 $bp-font-size-xlarge: rem-calc(65px) !default;

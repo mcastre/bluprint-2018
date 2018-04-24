@@ -1,24 +1,120 @@
 @import './variables';
 
 // 1:
-// FLEXBOX UTILS -----------------------------------
+// FLEXBOX / GRID UTILS -----------------------------------
 
 .bp-display-flex {
-  display: flex !important;
+  display: flex;
+  @media #{$bp-media-query-xs-screen-only} {
+    display: block !important;
+  }
 }
 
 .bp-flex-justify-content-space-between {
   justify-content: space-between !important;
 }
 
+.bp-flex-grow {
+  -webkit-box-flex: 1 !important;
+  flex-grow: 1 !important;
+}
+
+.bp-flex-column {
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+  flex-direction: column !important;
+}
+
+.bp-flex-shrink {
+  -ms-flex-negative: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+.bp-container-width {
+  width: 100%;
+  @media #{$bp-media-query-large-screen} {
+    width: 1440px;
+  }
+}
+
+.bp-sidebar-width {
+  width: 100%;
+  @media #{$bp-media-query-large-screen} {
+    width: 300px !important;
+  }
+}
+
+.bp-display-grid {
+  display: grid !important;
+}
+
+.bp-grid-2-up {
+  grid-template-columns: 100%;
+
+  @media #{$bp-media-query-medium-screen} {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+.bp-width-100 {
+  width: 100% !important;
+}
+
+.bp-height-100 {
+  height: 100% !important;
+}
+
 
 // 2:
-// MARGINS -----------------------------------
+// MARGINS / PADDING -----------------------------------
+
+.bp-margin-auto {
+  margin: 0 auto !important;
+}
+
+.bp-margin-1 {
+  margin: 1rem !important;
+}
+
+.bp-margin-top-1 {
+  margin-top: 1rem !important;
+}
+
+.bp-margin-top-2 {
+  margin-top: 2rem !important;
+}
+
+.bp-margin-left-1 {
+  margin-left: 1rem !important;
+}
+
+.bp-margin-left-2 {
+  margin-left: 2rem !important;
+}
+
+.bp-margin-right-1 {
+  margin-right: 1rem !important;
+}
+
+.bp-margin-right-2 {
+  margin-right: 2rem !important;
+}
+
+.bp-margin-bottom-1 {
+  margin-bottom: 1rem !important;
+}
+
+.bp-margin-bottom-2 {
+  margin-bottom: 2rem !important;
+}
 
 .bp-margin-right-auto {
   margin-right: auto !important;
 }
 
+.bp-padding-1 {
+  padding: 1rem !important;
+}
 
 // 3:
 // RESPONSIVE -----------------------------------
@@ -58,18 +154,26 @@ $bp-display-values: (
 
 @include bp-generate-breakpoint-prefixes() {
   @each $display-value in $bp-display-values {
-    &display-#{$display-value} { display: $display-value !important }
+    &display-#{$display-value} { display: $display-value }
   }
 }
 
 @include bp-generate-breakpoint-prefixes-for-hide() {
   @each $display-value in $bp-display-values {
-    &display-#{$display-value}-hide { display: $display-value !important }
+    &display-#{$display-value}-hide { display: $display-value }
   }
 }
 
 // 3:
 // TYPE -----------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $bp-font-family-heading;
+}
+
+p, a, li, span, input {
+  font-family: $bp-font-family-mono;
+}
 
 .bp-mono-family {
   font-family: $bp-font-family-mono !important;
@@ -87,6 +191,10 @@ $bp-display-values: (
   font-weight: $bp-font-weight-bold !important;
 }
 
+.bp-font-size-small {
+  font-size: $bp-font-size-small !important;
+}
+
 .bp-font-size-normal {
   font-size: $bp-font-size-normal !important;
 }
@@ -97,6 +205,20 @@ $bp-display-values: (
 
 .bp-font-size-xlarge {
   font-size: $bp-font-size-xlarge !important;
+}
+
+.bp-caps {
+  text-transform: uppercase !important;
+}
+
+.bp-letter-spacing {
+  letter-spacing: 2px !important;
+}
+
+.bp-text-body-snippet {
+  max-width: 430px;
+  max-height: 150px;
+  overflow: hidden;
 }
 
 // 3:

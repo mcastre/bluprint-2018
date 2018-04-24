@@ -1,6 +1,35 @@
 <section class="bp-hero">
   <div class="bp-hero-article-title-wrapper">
-    <h1 class="bp-hero-article-title bp-float-right bp-heading-family bp-font-size-xlarge bp-weight-bold bp-text-white bp-align-right">{{featuredArticleTitle}}</h1>
+    <div class="bp-hero-article-title bp-float-right">
+      <a href="" class="bp-text-white bp-caps bp-letter-spacing bp-weight-bold bp-font-size-small">Category</a>
+      <h1 class="bp-font-size-xlarge bp-weight-bold bp-text-white bp-align-right bp-margin-top-1">{{featuredArticleTitle}}</h1>
+      <a href="" class="bp-text-white bp-caps bp-weight-bold bp-align-right bp-link-has-arrow">Continue to article</a>
+    </div>
   </div>
   <img [src]="!!featuredArticleImage ? featuredArticleImage.fields.file.url : ''" alt="{{featuredArticleImage?.fields.title}}" class="bp-featured-article-hero-image">
+</section>
+<section class="bp-display-flex bp-flex-grow bp-container-width bp-margin-auto bp-margin-top-2">
+  <div class="bp-display-flex bp-flex-grow bp-flex-column bp-margin-right-1">
+    <div class="bp-display-grid bp-grid-2-up">
+      <article *ngFor="let article of getNonFeaturedArticles()" class="bp-margin-bottom-1">
+        <div class="bp-article-thumb-wrapper">
+          <img [src]="article.fields.articleFeaturedImage.fields.file.url" alt="article.articleTitle">
+        </div>
+        <a href="" class="bp-text-blue bp-caps bp-letter-spacing bp-weight-bold bp-font-size-small">{{getSingleArticleCategory(article)}}</a>
+        <a href=""><h2 class="bp-font-size-large bp-weight-bold bp-text-dark-blue bp-margin-top-1">{{article.fields.articleTitle}}</h2></a>
+        <p>- {{article.fields.articleAuthor.fields.author_name}}</p>
+        <p class="bp-text-body-snippet bp-text-blue-grey">{{article.fields.articleBody}}</p>
+      </article>
+    </div>
+  </div>
+  <aside class="bp-display-flex bp-flex-shrink bp-flex-column bp-sidebar-width">
+    <h3 class="bp-font-size-medium bp-weight-normal bp-text-grey">Category Features</h3>
+    <article *ngFor="let article of getNonFeaturedArticles()" class="bp-margin-bottom-1">
+      <a href="" class="bp-text-blue bp-caps bp-letter-spacing bp-weight-bold bp-font-size-small bp-margin-bottom-1">{{getSingleArticleCategory(article)}}</a>
+      <div class="bp-article-thumb-wrapper bp-width-100">
+        <img [src]="article.fields.articleFeaturedImage.fields.file.url" alt="article.articleTitle">
+      </div>
+      <a href="" class="bp-weight-bold bp-align-right bp-link-has-arrow bp-float-right bp-margin-top-2">View more from {{getSingleArticleCategory(article)}}</a>
+    </article>
+  </aside>
 </section>

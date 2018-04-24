@@ -2,8 +2,10 @@
 
 .bp-hero {
   position: relative;
-  height: 80vh;
-  overflow-y: hidden;
+  @media #{$bp-media-query-medium-screen} {
+    height: 80vh;
+    overflow-y: hidden;
+  }
   img {
     position: absolute;
     top: 0;
@@ -30,5 +32,15 @@
 }
 
 .bp-hero-article-title {
-  width: 40%;
+  width: 35%;
+}
+
+.bp-article-thumb-wrapper {
+  width: 430px;
+  height: 100%;
+  max-height: 230px;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
 }
